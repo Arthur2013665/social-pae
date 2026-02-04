@@ -2,6 +2,8 @@
 
 A beautiful, animated social media profile page with customizable wallpapers, particle effects, and modern glass morphism design.
 
+**🔗 Repository:** https://github.com/Arthur2013665/social-pae
+
 ## ✨ Features
 
 - **🌊 Animated Particle Background** - 80 flowing particles with customizable colors
@@ -37,14 +39,16 @@ The script will prompt you for all required information step by step.
 ## 🛠️ Installation
 
 1. **Clone or download** this repository
-2. **Make the script executable:**
    ```bash
-   chmod +x generate-social-page.sh
+   git clone https://github.com/Arthur2013665/social-pae.git
+   cd social-pae
    ```
-3. **Run the generator:**
+2. **Run the generator:**
    ```bash
    ./generate-social-page.sh
    ```
+
+> **Note:** The script is already executable in the repository. If you downloaded the files manually, you may need to make it executable with `chmod +x generate-social-page.sh`
 
 ## 📖 Usage Examples
 
@@ -155,7 +159,7 @@ The script creates three files:
 
 ### Script Won't Run
 ```bash
-# Make sure the script is executable
+# If you downloaded files manually, make the script executable
 chmod +x generate-social-page.sh
 
 # Check if you have bash installed
