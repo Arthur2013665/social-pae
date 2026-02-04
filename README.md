@@ -30,7 +30,7 @@ The script will prompt you for all required information step by step.
 
 ## 📋 Requirements
 
-- Bash shell (Linux/macOS/WSL)
+- Bash shell (Linux/macOS/Windows WSL)
 - Web browser for viewing the generated page
 - Internet connection (for Font Awesome icons)
 
