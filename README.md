@@ -1,4 +1,4 @@
-# 🎨 Social Media Profile Page Generator
+# 🎨 Social Media Profile/Page Generator
 
 A beautiful, animated social media profile page with customizable wallpapers, particle effects, and modern glass morphism design.
 
