@@ -231,11 +231,11 @@ input:checked + .slider:before {
   justify-content: center;
   box-shadow: 0px 10px 10px #0000001a;
   transition: all 0.3s ease;
-  transform: scale(1.5);
+  transform: scale(1.9);
 }
 
 .ohraniceni:hover {
-  transform: scale(1.5) translateY(-2px);
+  transform: scale(1.9) translateY(-2px);
   box-shadow: 0px 15px 20px #0000001a;
 }
 
@@ -575,7 +575,7 @@ input:checked + .slider:before {
   }
   to {
     opacity: 1;
-    transform: scale(1.5);
+    transform: scale(1.9);
   }
 }
 
