@@ -15,18 +15,20 @@ show_usage() {
     echo -e "${BLUE}Social Media Page Generator${NC}"
     echo -e "${YELLOW}Usage:${NC}"
     echo "  $0                                           # Interactive mode (prompts for input)"
-    echo "  $0 <channel_name> <dc_name> <youtube_link> <discord_link> [output_dir]"
+    echo "  $0 <channel_name> <dc_name> <youtube_link> <discord_link> [icon_path] [output_dir]"
     echo ""
     echo -e "${YELLOW}Parameters:${NC}"
     echo "  channel_name  - Your YouTube channel name (e.g., 'FMR')"
     echo "  dc_name       - Your Discord server name (e.g., 'FMR's basement')"
     echo "  youtube_link  - Your YouTube channel URL"
     echo "  discord_link  - Your Discord server invite link (non-expiring)"
+    echo "  icon_path     - Path to your profile icon/avatar image (optional)"
     echo "  output_dir    - Output directory (optional, defaults to current directory)"
     echo ""
     echo -e "${YELLOW}Examples:${NC}"
     echo "  $0                                           # Run in interactive mode"
-    echo "  $0 'FMR' \"FMR's basement\" 'https://youtube.com/@fmr' 'https://discord.gg/abc123' './my-page'"
+    echo "  $0 'FMR' \"FMR's basement\" 'https://youtube.com/@fmr' 'https://discord.gg/abc123'"
+    echo "  $0 'FMR' \"FMR's basement\" 'https://youtube.com/@fmr' 'https://discord.gg/abc123' './avatar.png' './my-page'"
 }
 
 # Function to prompt for parameters interactively
@@ -66,6 +68,13 @@ prompt_for_parameters() {
         read -p "> " DISCORD_LINK
     done
     
+    # Icon Path
+    echo -e "${YELLOW}Enter path to your profile icon/avatar (press Enter to use default):${NC}"
+    read -p "> " ICON_PATH
+    if [ ! -z "$ICON_PATH" ] && [ ! -f "$ICON_PATH" ]; then
+        echo -e "${RED}Warning: Icon file not found at '$ICON_PATH'. Will use default placeholder.${NC}"
+    fi
+    
     # Output Directory
     echo -e "${YELLOW}Enter output directory (press Enter for current directory):${NC}"
     read -p "> " OUTPUT_DIR
@@ -80,7 +89,7 @@ prompt_for_parameters() {
 if [ $# -eq 0 ]; then
     # Interactive mode
     prompt_for_parameters
-elif [ $# -lt 4 ] || [ $# -gt 5 ]; then
+elif [ $# -lt 4 ] || [ $# -gt 6 ]; then
     echo -e "${RED}Error: Invalid number of arguments${NC}"
     show_usage
     exit 1
@@ -90,7 +99,17 @@ else
     DC_NAME="$2"
     YOUTUBE_LINK="$3"
     DISCORD_LINK="$4"
-    OUTPUT_DIR="${5:-.}"
+    ICON_PATH="$5"
+    OUTPUT_DIR="${6:-.}"
+    
+    # If only 5 arguments, check if 5th is a directory or file
+    if [ $# -eq 5 ]; then
+        if [ -d "$5" ] || [[ "$5" == *"/"* ]]; then
+            # 5th argument is output directory
+            OUTPUT_DIR="$5"
+            ICON_PATH=""
+        fi
+    fi
 fi
 
 # Validate URLs
@@ -112,6 +131,9 @@ echo -e "${YELLOW}Channel Name:${NC} $CHANNEL_NAME"
 echo -e "${YELLOW}Discord Name:${NC} $DC_NAME"
 echo -e "${YELLOW}YouTube Link:${NC} $YOUTUBE_LINK"
 echo -e "${YELLOW}Discord Link:${NC} $DISCORD_LINK"
+if [ ! -z "$ICON_PATH" ]; then
+    echo -e "${YELLOW}Icon Path:${NC} $ICON_PATH"
+fi
 echo -e "${YELLOW}Output Directory:${NC} $OUTPUT_DIR"
 echo ""
 
@@ -273,11 +295,25 @@ EOF
 sed -i "s/CHANNEL_NAME_PLACEHOLDER/$CHANNEL_NAME/g" "$OUTPUT_DIR/index.html"
 sed -i "s/DC_NAME_PLACEHOLDER/$DC_NAME/g" "$OUTPUT_DIR/index.html"
 
+# Handle icon replacement
+if [ ! -z "$ICON_PATH" ] && [ -f "$ICON_PATH" ]; then
+    # Copy the icon file to output directory
+    ICON_FILENAME=$(basename "$ICON_PATH")
+    cp "$ICON_PATH" "$OUTPUT_DIR/$ICON_FILENAME"
+    # Replace placeholder with actual icon path
+    sed -i "s|https://via.placeholder.com/150x150/333333/ffffff?text=CHANNEL_NAME_PLACEHOLDER|$ICON_FILENAME|g" "$OUTPUT_DIR/index.html"
+    echo -e "${GREEN}✓${NC} Copied custom icon: $ICON_FILENAME"
+fi
+
 echo -e "${GREEN}✓${NC} Generated index.html"
 
 # Copy CSS file
 cp style.css "$OUTPUT_DIR/style.css"
 echo -e "${GREEN}✓${NC} Copied style.css"
+
+# Copy favicon
+cp favicon.svg "$OUTPUT_DIR/favicon.svg"
+echo -e "${GREEN}✓${NC} Copied favicon.svg"
 
 # Generate script.js with custom links
 cat > "$OUTPUT_DIR/script.js" << 'EOF'
@@ -756,6 +792,12 @@ sed -i "s/CHANNEL_NAME_PLACEHOLDER/$CHANNEL_NAME/g" "$OUTPUT_DIR/script.js"
 sed -i "s|YOUTUBE_LINK_PLACEHOLDER|$YOUTUBE_LINK|g" "$OUTPUT_DIR/script.js"
 sed -i "s|DISCORD_LINK_PLACEHOLDER|$DISCORD_LINK|g" "$OUTPUT_DIR/script.js"
 
+# Handle icon in JavaScript
+if [ ! -z "$ICON_PATH" ] && [ -f "$ICON_PATH" ]; then
+    ICON_FILENAME=$(basename "$ICON_PATH")
+    sed -i "s|https://via.placeholder.com/150x150/333333/ffffff?text=CHANNEL_NAME_PLACEHOLDER|$ICON_FILENAME|g" "$OUTPUT_DIR/script.js"
+fi
+
 echo -e "${GREEN}✓${NC} Generated script.js with custom links"
 
 echo ""
@@ -765,6 +807,10 @@ echo -e "${YELLOW}Files:${NC}"
 echo "  - index.html"
 echo "  - style.css"
 echo "  - script.js"
+echo "  - favicon.svg"
+if [ ! -z "$ICON_PATH" ] && [ -f "$ICON_PATH" ]; then
+    echo "  - $(basename "$ICON_PATH") (custom profile icon)"
+fi
 echo ""
 echo -e "${BLUE}To view your page:${NC}"
 echo "  1. Open $OUTPUT_DIR/index.html in your browser"

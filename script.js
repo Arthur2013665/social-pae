@@ -8,7 +8,7 @@ const socialLinks = {
 const profileData = {
     name: 'FMR',
     about: 'Content Creator, Gamer & Developer',
-    profileImage: 'https://yt3.googleusercontent.com/ytc/AIdro_kKZhFE-9gv1L0yCC-8J8H1w8TgS8RgBQI-PcNd=s176-c-k-c0x00ffffff-no-rj'
+    profileImage: 'avatar.jpeg'
 };
 
 // Particles system
