@@ -464,7 +464,7 @@ input:checked + .slider:before {
 /* Action Buttons */
 .action-buttons {
   position: fixed;
-  top: 90px;
+  top: 108px;
   right: 20px;
   z-index: 1000;
   display: flex;
@@ -476,8 +476,8 @@ input:checked + .slider:before {
 }
 
 .action-button {
-  width: 55px;
-  height: 55px;
+  width: 66px;
+  height: 66px;
   background-color: var(--glass-buttons);
   backdrop-filter: blur(16px) brightness(0.7);
   border-radius: 50%;
@@ -495,7 +495,7 @@ input:checked + .slider:before {
 }
 
 .action-button i {
-  font-size: 20px;
+  font-size: 24px;
   color: var(--b-accent);
 }
 
@@ -641,8 +641,8 @@ input:checked + .slider:before {
 }
 
 .settings-icon {
-  width: 60px;
-  height: 60px;
+  width: 72px;
+  height: 72px;
   background-color: var(--glass-buttons);
   backdrop-filter: blur(16px) brightness(0.7);
   border-radius: 50%;
@@ -660,21 +660,21 @@ input:checked + .slider:before {
 }
 
 .settings-icon i {
-  font-size: 24px;
+  font-size: 29px;
   color: var(--b-accent);
 }
 
 .settings-panel {
   position: absolute;
   top: 0;
-  right: 75px;
-  width: 350px;
-  max-height: 600px;
+  right: 90px;
+  width: 420px;
+  max-height: 720px;
   overflow-y: auto;
   background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(20px) brightness(0.8);
   border-radius: 20px;
-  padding: 25px;
+  padding: 30px;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
   opacity: 0;
   visibility: hidden;
