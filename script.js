@@ -128,6 +128,8 @@ const profileImg = document.getElementById('profileImg');
 const settingsIcon = document.getElementById('settingsIcon');
 const settingsPanel = document.getElementById('settingsPanel');
 const bgvid = document.getElementById('bgvid');
+const refreshBtn = document.getElementById('refreshBtn');
+const shareBtn = document.getElementById('shareBtn');
 
 // Wallpaper configurations
 const wallpapers = {
@@ -247,6 +249,9 @@ function initializePage() {
     
     // Initialize settings panel
     initializeSettings();
+    
+    // Initialize action buttons
+    initializeActionButtons();
 }
 
 // Toggle black and white mode
@@ -326,18 +331,66 @@ function addButtonFeedback() {
     });
 }
 
-// Initialize everything when the page loads
-document.addEventListener('DOMContentLoaded', () => {
-    initializePage();
-    addButtonFeedback();
+// Initialize action buttons
+function initializeActionButtons() {
+    // Refresh button
+    refreshBtn.addEventListener('click', () => {
+        // Add spin animation
+        refreshBtn.querySelector('i').style.animation = 'spin 0.5s ease-in-out';
+        
+        // Refresh page after animation
+        setTimeout(() => {
+            location.reload();
+        }, 500);
+    });
     
-    // Initialize particle system and store reference globally
-    window.particleSystem = new ParticleSystem();
-});
-
-// Export functions for external use (if needed)
-window.updateSocialLinks = updateSocialLinks;
-window.updateProfile = updateProfile;
+    // Share button
+    shareBtn.addEventListener('click', async () => {
+        const shareData = {
+            title: 'FMR - Social Media Profile',
+            text: 'Check out my awesome social media profile page!',
+            url: window.location.href
+        };
+        
+        try {
+            // Try native Web Share API first
+            if (navigator.share) {
+                await navigator.share(shareData);
+            } else {
+                // Fallback to clipboard
+                await navigator.clipboard.writeText(window.location.href);
+                
+                // Show feedback
+                const originalIcon = shareBtn.querySelector('i');
+                originalIcon.className = 'fas fa-check';
+                shareBtn.title = 'Link copied to clipboard!';
+                
+                // Reset after 2 seconds
+                setTimeout(() => {
+                    originalIcon.className = 'fas fa-share-alt';
+                    shareBtn.title = 'Share Page';
+                }, 2000);
+            }
+        } catch (error) {
+            console.log('Sharing failed:', error);
+            
+            // Fallback: try to copy to clipboard
+            try {
+                await navigator.clipboard.writeText(window.location.href);
+                const originalIcon = shareBtn.querySelector('i');
+                originalIcon.className = 'fas fa-check';
+                shareBtn.title = 'Link copied to clipboard!';
+                
+                setTimeout(() => {
+                    originalIcon.className = 'fas fa-share-alt';
+                    shareBtn.title = 'Share Page';
+                }, 2000);
+            } catch (clipboardError) {
+                console.log('Clipboard access failed:', clipboardError);
+            }
+        }
+    });
+}
 
 // Initialize settings panel
 function initializeSettings() {
@@ -400,3 +453,16 @@ function changeWallpaper(bgType) {
         }
     }
 }
+
+// Initialize everything when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    initializePage();
+    addButtonFeedback();
+    
+    // Initialize particle system and store reference globally
+    window.particleSystem = new ParticleSystem();
+});
+
+// Export functions for external use (if needed)
+window.updateSocialLinks = updateSocialLinks;
+window.updateProfile = updateProfile;
