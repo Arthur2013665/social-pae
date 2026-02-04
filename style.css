@@ -780,6 +780,54 @@ input:checked + .slider:before {
   background: linear-gradient(270deg, #ff9ff3, #54a0ff, #5f27cd, #ff6b6b);
 }
 
+.gradient9-preview {
+  background: linear-gradient(270deg, #00f5ff, #0099ff, #6600ff, #ff0099);
+}
+
+.gradient10-preview {
+  background: linear-gradient(270deg, #8e2de2, #4a00e0, #ff006e, #8338ec);
+}
+
+.gradient11-preview {
+  background: linear-gradient(270deg, #00d4aa, #00c9ff, #92fe9d, #00c9ff);
+}
+
+.gradient12-preview {
+  background: linear-gradient(270deg, #ff0844, #ffb199, #ff6b6b, #4ecdc4);
+}
+
+.gradient13-preview {
+  background: linear-gradient(270deg, #667eea, #764ba2, #f093fb, #f5576c);
+}
+
+.gradient14-preview {
+  background: linear-gradient(270deg, #4facfe, #00f2fe, #43e97b, #38f9d7);
+}
+
+.gradient15-preview {
+  background: linear-gradient(270deg, #667eea, #764ba2, #f093fb, #f5576c);
+}
+
+.gradient16-preview {
+  background: linear-gradient(270deg, #ff9a9e, #fecfef, #fecfef, #ff9a9e);
+}
+
+.gradient17-preview {
+  background: linear-gradient(270deg, #c0c0c0, #87ceeb, #4682b4, #708090);
+}
+
+.gradient18-preview {
+  background: linear-gradient(270deg, #ff4500, #ff6347, #ffa500, #ff8c00);
+}
+
+.gradient19-preview {
+  background: linear-gradient(270deg, #e0e6ff, #c9d6ff, #667eea, #764ba2);
+}
+
+.gradient20-preview {
+  background: linear-gradient(270deg, #00c6ff, #0072ff, #9400d3, #4b0082);
+}
+
 .static1-preview {
   background: linear-gradient(135deg, #0c0c0c, #2d3748, #4a5568);
 }
@@ -810,6 +858,54 @@ input:checked + .slider:before {
 
 .static8-preview {
   background: linear-gradient(135deg, #a8edea, #fed6e3);
+}
+
+.static9-preview {
+  background: linear-gradient(135deg, #2c3e50, #4a4a4a, #8b4513);
+}
+
+.static10-preview {
+  background: linear-gradient(135deg, #1e3c72, #2a5298, #0f4c75);
+}
+
+.static11-preview {
+  background: linear-gradient(135deg, #ff7e5f, #feb47b, #ff6b35);
+}
+
+.static12-preview {
+  background: linear-gradient(135deg, #56ab2f, #a8e6cf, #2e8b57);
+}
+
+.static13-preview {
+  background: linear-gradient(135deg, #6a0572, #ab83a1, #9b59b6);
+}
+
+.static14-preview {
+  background: linear-gradient(135deg, #8b0000, #dc143c, #b22222);
+}
+
+.static15-preview {
+  background: linear-gradient(135deg, #2c3e50, #bdc3c7, #ecf0f1);
+}
+
+.static16-preview {
+  background: linear-gradient(135deg, #b7472a, #d2691e, #cd853f);
+}
+
+.static17-preview {
+  background: linear-gradient(135deg, #dda0dd, #e6e6fa, #9370db);
+}
+
+.static18-preview {
+  background: linear-gradient(135deg, #ff7f50, #ffa500, #ff6347);
+}
+
+.static19-preview {
+  background: linear-gradient(135deg, #4682b4, #5f9ea0, #708090);
+}
+
+.static20-preview {
+  background: linear-gradient(135deg, #ffc0cb, #ffb6c1, #dda0dd);
 }
 
 .wallpaper-option span {

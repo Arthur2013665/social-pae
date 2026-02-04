@@ -493,6 +493,66 @@ const wallpapers = {
         name: 'Rainbow Shift',
         animated: true
     },
+    gradient9: {
+        background: 'linear-gradient(270deg, #00f5ff, #0099ff, #6600ff, #ff0099, #00f5ff)',
+        name: 'Electric Storm',
+        animated: true
+    },
+    gradient10: {
+        background: 'linear-gradient(270deg, #8e2de2, #4a00e0, #ff006e, #8338ec, #3a1c71)',
+        name: 'Mystic Flow',
+        animated: true
+    },
+    gradient11: {
+        background: 'linear-gradient(270deg, #00d4aa, #00c9ff, #92fe9d, #00c9ff, #00d4aa)',
+        name: 'Cyber Wave',
+        animated: true
+    },
+    gradient12: {
+        background: 'linear-gradient(270deg, #ff0844, #ffb199, #ff6b6b, #4ecdc4, #44a08d)',
+        name: 'Plasma Dance',
+        animated: true
+    },
+    gradient13: {
+        background: 'linear-gradient(270deg, #667eea, #764ba2, #f093fb, #f5576c, #4facfe)',
+        name: 'Aurora Storm',
+        animated: true
+    },
+    gradient14: {
+        background: 'linear-gradient(270deg, #4facfe, #00f2fe, #43e97b, #38f9d7, #4facfe)',
+        name: 'Neon Dreams',
+        animated: true
+    },
+    gradient15: {
+        background: 'linear-gradient(270deg, #667eea, #764ba2, #f093fb, #f5576c, #4facfe)',
+        name: 'Galaxy Spiral',
+        animated: true
+    },
+    gradient16: {
+        background: 'linear-gradient(270deg, #ff9a9e, #fecfef, #fecfef, #ff9a9e, #fad0c4)',
+        name: 'Prism Light',
+        animated: true
+    },
+    gradient17: {
+        background: 'linear-gradient(270deg, #c0c0c0, #87ceeb, #4682b4, #708090, #c0c0c0)',
+        name: 'Liquid Metal',
+        animated: true
+    },
+    gradient18: {
+        background: 'linear-gradient(270deg, #ff4500, #ff6347, #ffa500, #ff8c00, #ff4500)',
+        name: 'Phoenix Fire',
+        animated: true
+    },
+    gradient19: {
+        background: 'linear-gradient(270deg, #e0e6ff, #c9d6ff, #667eea, #764ba2, #e0e6ff)',
+        name: 'Crystal Cave',
+        animated: true
+    },
+    gradient20: {
+        background: 'linear-gradient(270deg, #00c6ff, #0072ff, #9400d3, #4b0082, #00c6ff)',
+        name: 'Quantum Flow',
+        animated: true
+    },
     // Static gradients
     static1: {
         background: 'linear-gradient(135deg, #0c0c0c 0%, #2d3748 50%, #4a5568 100%)',
@@ -532,6 +592,66 @@ const wallpapers = {
     static8: {
         background: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
         name: 'Arctic Frost',
+        animated: false
+    },
+    static9: {
+        background: 'linear-gradient(135deg, #2c3e50 0%, #4a4a4a 50%, #8b4513 100%)',
+        name: 'Volcanic Ash',
+        animated: false
+    },
+    static10: {
+        background: 'linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #0f4c75 100%)',
+        name: 'Ocean Depths',
+        animated: false
+    },
+    static11: {
+        background: 'linear-gradient(135deg, #ff7e5f 0%, #feb47b 50%, #ff6b35 100%)',
+        name: 'Desert Sunset',
+        animated: false
+    },
+    static12: {
+        background: 'linear-gradient(135deg, #56ab2f 0%, #a8e6cf 50%, #2e8b57 100%)',
+        name: 'Emerald Valley',
+        animated: false
+    },
+    static13: {
+        background: 'linear-gradient(135deg, #6a0572 0%, #ab83a1 50%, #9b59b6 100%)',
+        name: 'Royal Purple',
+        animated: false
+    },
+    static14: {
+        background: 'linear-gradient(135deg, #8b0000 0%, #dc143c 50%, #b22222 100%)',
+        name: 'Crimson Night',
+        animated: false
+    },
+    static15: {
+        background: 'linear-gradient(135deg, #2c3e50 0%, #bdc3c7 50%, #ecf0f1 100%)',
+        name: 'Moonlight Silver',
+        animated: false
+    },
+    static16: {
+        background: 'linear-gradient(135deg, #b7472a 0%, #d2691e 50%, #cd853f 100%)',
+        name: 'Copper Glow',
+        animated: false
+    },
+    static17: {
+        background: 'linear-gradient(135deg, #dda0dd 0%, #e6e6fa 50%, #9370db 100%)',
+        name: 'Lavender Fields',
+        animated: false
+    },
+    static18: {
+        background: 'linear-gradient(135deg, #ff7f50 0%, #ffa500 50%, #ff6347 100%)',
+        name: 'Autumn Leaves',
+        animated: false
+    },
+    static19: {
+        background: 'linear-gradient(135deg, #4682b4 0%, #5f9ea0 50%, #708090 100%)',
+        name: 'Steel Blue',
+        animated: false
+    },
+    static20: {
+        background: 'linear-gradient(135deg, #ffc0cb 0%, #ffb6c1 50%, #dda0dd 100%)',
+        name: 'Rose Gold',
         animated: false
     }
 };
@@ -818,10 +938,11 @@ echo "  2. Or serve it with a local web server"
 echo ""
 echo -e "${BLUE}Features included:${NC}"
 echo "  ✓ Animated particle background"
-echo "  ✓ 16 gradient wallpaper options"
+echo "  ✓ 40 gradient wallpaper options (20 animated + 20 static)"
 echo "  ✓ Responsive social media buttons"
 echo "  ✓ B&W mode toggle"
 echo "  ✓ Settings panel with wallpaper customization"
 echo "  ✓ Refresh and share buttons"
 echo "  ✓ Intro animations"
 echo "  ✓ Custom transparent scrollbars"
+echo "  ✓ Custom profile icon support"
