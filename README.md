@@ -1,4 +1,4 @@
-# 🎨 Social Media Profile Page Generator
+# 🎨 Social Media Profile/Page Generator
 
 A beautiful, animated social media profile page with customizable wallpapers, particle effects, and modern glass morphism design.
 
@@ -32,7 +32,7 @@ The script will prompt you for all required information step by step.
 
 ## 📋 Requirements
 
-- Bash shell (Linux/macOS/WSL)
+- Bash shell (Linux/macOS/Windows WSL)
 - Web browser for viewing the generated page
 - Internet connection (for Font Awesome icons)
 
