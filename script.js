@@ -125,6 +125,95 @@ const discordBtn = document.getElementById('discordBtn');
 const profileName = document.getElementById('profileName');
 const profileAbout = document.getElementById('profileAbout');
 const profileImg = document.getElementById('profileImg');
+const settingsIcon = document.getElementById('settingsIcon');
+const settingsPanel = document.getElementById('settingsPanel');
+const bgvid = document.getElementById('bgvid');
+
+// Wallpaper configurations
+const wallpapers = {
+    // Animated gradients
+    gradient1: {
+        background: 'linear-gradient(270deg, #2dd4bf, #3b82f6, #8b5cf6, #667eea, #764ba2)',
+        name: 'Teal Flow',
+        animated: true
+    },
+    gradient2: {
+        background: 'linear-gradient(270deg, #667eea, #764ba2, #8b5cf6, #9b59b6, #8e44ad)',
+        name: 'Purple Dream',
+        animated: true
+    },
+    gradient3: {
+        background: 'linear-gradient(270deg, #ff6b6b, #feca57, #ff9ff3, #f093fb, #f5576c)',
+        name: 'Sunset Glow',
+        animated: true
+    },
+    gradient4: {
+        background: 'linear-gradient(270deg, #74b9ff, #0984e3, #6c5ce7, #a29bfe, #fd79a8)',
+        name: 'Ocean Breeze',
+        animated: true
+    },
+    gradient5: {
+        background: 'linear-gradient(270deg, #ff6b6b, #ee5a24, #ff9ff3, #f093fb, #ff6348)',
+        name: 'Fire Wave',
+        animated: true
+    },
+    gradient6: {
+        background: 'linear-gradient(270deg, #00d2d3, #54a0ff, #5f27cd, #341f97, #00d2d3)',
+        name: 'Neon Nights',
+        animated: true
+    },
+    gradient7: {
+        background: 'linear-gradient(270deg, #341f97, #5f27cd, #00d2d3, #54a0ff, #341f97)',
+        name: 'Cosmic Flow',
+        animated: true
+    },
+    gradient8: {
+        background: 'linear-gradient(270deg, #ff9ff3, #54a0ff, #5f27cd, #ff6b6b, #feca57)',
+        name: 'Rainbow Shift',
+        animated: true
+    },
+    // Static gradients
+    static1: {
+        background: 'linear-gradient(135deg, #0c0c0c 0%, #2d3748 50%, #4a5568 100%)',
+        name: 'Midnight',
+        animated: false
+    },
+    static2: {
+        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        name: 'Aurora',
+        animated: false
+    },
+    static3: {
+        background: 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%)',
+        name: 'Coral Reef',
+        animated: false
+    },
+    static4: {
+        background: 'linear-gradient(135deg, #134e5e 0%, #71b280 100%)',
+        name: 'Forest',
+        animated: false
+    },
+    static5: {
+        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #8b5cf6 100%)',
+        name: 'Purple Haze',
+        animated: false
+    },
+    static6: {
+        background: 'linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%)',
+        name: 'Deep Space',
+        animated: false
+    },
+    static7: {
+        background: 'linear-gradient(135deg, #f7971e 0%, #ffd200 100%)',
+        name: 'Golden Hour',
+        animated: false
+    },
+    static8: {
+        background: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
+        name: 'Arctic Frost',
+        animated: false
+    }
+};
 
 // Initialize the page
 function initializePage() {
@@ -155,6 +244,9 @@ function initializePage() {
 
     // Add keyboard navigation
     addKeyboardNavigation();
+    
+    // Initialize settings panel
+    initializeSettings();
 }
 
 // Toggle black and white mode
@@ -246,3 +338,65 @@ document.addEventListener('DOMContentLoaded', () => {
 // Export functions for external use (if needed)
 window.updateSocialLinks = updateSocialLinks;
 window.updateProfile = updateProfile;
+
+// Initialize settings panel
+function initializeSettings() {
+    // Toggle settings panel
+    settingsIcon.addEventListener('click', () => {
+        settingsPanel.classList.toggle('active');
+    });
+    
+    // Close settings panel when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!settingsIcon.contains(e.target) && !settingsPanel.contains(e.target)) {
+            settingsPanel.classList.remove('active');
+        }
+    });
+    
+    // Add wallpaper option click handlers
+    const wallpaperOptions = document.querySelectorAll('.wallpaper-option');
+    wallpaperOptions.forEach(option => {
+        option.addEventListener('click', () => {
+            const bgType = option.dataset.bg;
+            changeWallpaper(bgType);
+            updateActiveWallpaper(bgType);
+        });
+    });
+    
+    // Load saved wallpaper
+    const savedWallpaper = localStorage.getItem('selectedWallpaper') || 'gradient1';
+    changeWallpaper(savedWallpaper);
+    updateActiveWallpaper(savedWallpaper);
+}
+
+// Update active wallpaper selection
+function updateActiveWallpaper(bgType) {
+    const wallpaperOptions = document.querySelectorAll('.wallpaper-option');
+    wallpaperOptions.forEach(opt => opt.classList.remove('active'));
+    
+    const activeOption = document.querySelector(`[data-bg="${bgType}"]`);
+    if (activeOption) {
+        activeOption.classList.add('active');
+    }
+    
+    // Save selection
+    localStorage.setItem('selectedWallpaper', bgType);
+}
+
+// Change wallpaper function
+function changeWallpaper(bgType) {
+    const wallpaper = wallpapers[bgType];
+    if (wallpaper) {
+        bgvid.style.background = wallpaper.background;
+        
+        if (wallpaper.animated) {
+            // Animated gradient
+            bgvid.style.backgroundSize = '800% 800%';
+            bgvid.style.animation = 'gradientAnimation 15s ease infinite';
+        } else {
+            // Static gradient
+            bgvid.style.backgroundSize = '100% 100%';
+            bgvid.style.animation = 'none';
+        }
+    }
+}
